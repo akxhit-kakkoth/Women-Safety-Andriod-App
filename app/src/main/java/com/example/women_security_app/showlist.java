@@ -85,7 +85,7 @@ public class showlist extends AppCompatActivity {
                         JSONObject object = jsonArray.getJSONObject(i);
                         name = object.getString("name");
                         opening = object.getString("vicinity");
-                        rating = object.getDouble("rating");
+                        //rating = object.getDouble("rating");
 
                         petrolpump petrolpump = new petrolpump(name,opening,rating);
                         movieList.add(petrolpump);

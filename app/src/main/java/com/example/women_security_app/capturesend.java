@@ -49,13 +49,16 @@ public class capturesend extends AsyncTask {
     @Override
     protected Object doInBackground(Object[] objects) {
 
-        final String username = "madhuri.sct@gmail.com";
-        String password = "qbfpnsybximtxbgp";
+        final String username = "dymmy27@gmail.com";
+        String password = "wnkncgxdhyfparuh";
         Properties props = new Properties();
         props.put("mail.smtp.auth", "true");
         props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.debug", "true");
         props.put("mail.smtp.host", "smtp.gmail.com");
         props.put("mail.smtp.port", "587");
+        props.put("mail.smtp.ssl.enable", "true");
+        props.put("mail.smtp.ssl.protocols", "TLSv1.2");
 
         Session session = Session.getInstance(props,
                 new javax.mail.Authenticator(){
@@ -71,7 +74,7 @@ public class capturesend extends AsyncTask {
             mm.setFrom(new InternetAddress("madhuri.sct@gmail.com"));
             mm.setRecipients(Message.RecipientType.TO,
                     InternetAddress.parse(email));
-            mm.setSubject("Call log");
+            mm.setSubject("Emergency");
 
             MimeBodyPart messageBodyPart1 = new MimeBodyPart();
             messageBodyPart1.setText("image");

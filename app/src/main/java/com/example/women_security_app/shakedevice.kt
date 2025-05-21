@@ -13,6 +13,7 @@ import android.location.Geocoder
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.telephony.SmsManager
 import android.widget.Button
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -122,16 +123,25 @@ class shakedevice : AppCompatActivity() {
 //                    Toast.makeText(applicationContext,addresses.get(0).getAddressLine(0),Toast.LENGTH_LONG).show()
 
 //                    val s = send(applicationContext, "madhurioza2@gmail.com", "Call Log ", msg)
-//                       s.execute()
-                    val MY_PREFS_NAME = "MyPrefsFile"
-                    val prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE)
-                    val mail = prefs.getString("mail", "No name defined")
-                    val number = prefs.getString("number", "")
+                  val prefs = getSharedPreferences("data", MODE_PRIVATE)
 
-//                    Toast.makeText(applicationContext,mail.toString(),Toast.LENGTH_LONG).show()
-                    val se = send(applicationContext,mail.toString(),"Current Location",msg)
-                    se.execute()
+               val one = prefs.getString("one", "No name defined")
+                val two = prefs.getString("two", "")
+                val three = prefs.getString("three", "")
 
+//                Toast.makeText(applicationContext,value.toString(),Toast.LENGTH_LONG).show()
+//                val se = send(applicationContext,mail.toString(),"audio",msg)
+//                se.execute()
+//                System.out.println(number)
+
+                val smsManager = SmsManager.getDefault() as SmsManager
+                smsManager.sendTextMessage("+91$one",null,address,null,null)
+
+                val smsM = SmsManager.getDefault() as SmsManager
+                smsM.sendTextMessage("+91$two",null,address,null,null)
+
+                val sms = SmsManager.getDefault() as SmsManager
+                sms.sendTextMessage("+91$three",null,address,null,null)
 
 
                 } catch (e: IOException) {

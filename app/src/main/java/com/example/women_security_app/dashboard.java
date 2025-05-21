@@ -13,6 +13,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
@@ -61,6 +62,7 @@ public class dashboard extends AppCompatActivity {
 
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this);
 
+        //getlocation();
         if (ActivityCompat.checkSelfPermission(dashboard.this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             getlocation();
 
@@ -98,6 +100,8 @@ public class dashboard extends AppCompatActivity {
 
     private void getlocation() {
 
+       // Toast.makeText(getApplicationContext(), "location", Toast.LENGTH_SHORT).show();
+
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             // TODO: Consider calling
             //    ActivityCompat#requestPermissions
@@ -117,12 +121,13 @@ public class dashboard extends AppCompatActivity {
                     lati =  location.getLatitude();
                     longi =  location.getLongitude();
 
+
                     supportMapFragment.getMapAsync(new OnMapReadyCallback() {
                         @Override
                         public void onMapReady(@NonNull GoogleMap googleMap) {
                             map = googleMap;
                             map.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                                    new LatLng(lati, longi), 10
+                                    new LatLng(lati, longi), 12
                             ));
                         }
                     });

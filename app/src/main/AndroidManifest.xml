@@ -12,8 +12,11 @@
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <uses-feature android:name="android.hardware.camera" />
-    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+    <uses-feature
+        android:name="android.hardware.telephony"
+        android:required="false" />
 
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.SEND_SMS" />
 
@@ -24,10 +27,17 @@
         android:roundIcon="@drawable/women_sec"
         android:supportsRtl="true"
         android:theme="@style/Theme.Women_security_app">
+
+        <activity
+            android:name=".SafetyTips"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
         <activity
             android:name=".autocapture"
             android:exported="true">
-
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
@@ -49,7 +59,7 @@
         </activity>
         <activity
             android:name=".dashboard"
-            android:exported="true"></activity>
+            android:exported="true" />
 
         <meta-data
             android:name="com.google.android.geo.API_KEY"
@@ -61,30 +71,27 @@
         <activity
             android:name=".register"
             android:exported="true"
-            android:parentActivityName=".login"/>
+            android:parentActivityName=".login" />
         <activity
             android:name=".login"
-            android:exported="true"
-            >
+            android:exported="true">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
         <activity
             android:name=".shakedevice"
-            android:exported="true"></activity>
+            android:exported="true" />
         <activity
             android:name=".location"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
-            android:exported="true">
-
-        </activity>
+            android:exported="true" />
     </application>
 
 </manifest>

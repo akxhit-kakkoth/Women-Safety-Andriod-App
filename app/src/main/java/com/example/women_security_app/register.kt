@@ -1,14 +1,18 @@
 package com.example.women_security_app
 
+import android.annotation.SuppressLint
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.widget.Button
 import android.widget.EditText
+import android.widget.TextView
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import org.w3c.dom.Text
 
 class register : AppCompatActivity() {
 
@@ -18,8 +22,7 @@ class register : AppCompatActivity() {
     var databaseReference: DatabaseReference? = null
     var database: FirebaseDatabase? = null
 
-
-
+    @SuppressLint("MissingInflatedId")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_register)
@@ -29,6 +32,13 @@ class register : AppCompatActivity() {
         val password = findViewById<EditText>(R.id.password)
         val number = findViewById<EditText>(R.id.number)
         val btn = findViewById<Button>(R.id.btn_register)
+        val txtlogi = findViewById<TextView>(R.id.txtlogin)
+
+        txtlogi.setOnClickListener(){
+            val intent = Intent(this,login::class.java)
+            startActivity(intent)
+        }
+
         auth = FirebaseAuth.getInstance()
 
         database = FirebaseDatabase.getInstance()
@@ -69,6 +79,7 @@ class register : AppCompatActivity() {
                         Toast.makeText(applicationContext,"failed", Toast.LENGTH_LONG).show()
                     }
                 }
+
 
             val editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit()
             editor.putString("mail", mail.text.toString())

@@ -6,13 +6,19 @@ import android.media.Image
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.preference.PreferenceManager
+import android.renderscript.ScriptGroup.Binding
 import android.speech.RecognizerIntent
 import android.telephony.SmsManager
 import android.view.KeyEvent
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import androidx.annotation.Nullable
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import java.util.*
 
 
@@ -21,10 +27,50 @@ class MainActivity : AppCompatActivity() {
     var MY_PREFS_NAME = "MyPrefsFile"
 
     private val REQUEST_CODE_SPEECH_INPUT = 1
+
+//    lateinit var auth:FirebaseAuth
+
+//    private lateinit var mainBinding: ActivityBinding
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+//        auth = FirebaseAuth.getInstance()
+
+
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        val inflater = menuInflater
+        inflater.inflate(R.menu.menu, menu)
+        return true
+    }
+
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        when (item.itemId) {
+
+            R.id.safetytips -> {
+                val intent = Intent(applicationContext,SafetyTips::class.java)
+                startActivity(intent)
+
+            }
+
+            R.id.logout -> {
+//                val intent = Intent(applicationContext,login::class.java)
+//                startActivity(intent)
+
+//                auth.signOut()
+                Firebase.auth.signOut()
+                startActivity(Intent(this,login::class.java))
+                finish()
+
+            }
+
+        }
+        return true
     }
 
     override fun onKeyDown(keyCode: Int, event: KeyEvent?): Boolean {
@@ -74,17 +120,25 @@ class MainActivity : AppCompatActivity() {
 //                txt.setText(Objects.requireNonNull(result)?.get(0))
                 val msg:String = Objects.requireNonNull(result)?.get(0).toString()
                 //Toast.makeText(applicationContext,Objects.requireNonNull(result)?.get(0).toString(),Toast.LENGTH_LONG).show()
-                val prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE)
-               val mail = prefs.getString("mail", "No name defined")
-                val number = prefs.getString("number", "")
-                val mymsg = prefs.getString("msg", "")
+                val prefs = getSharedPreferences("data", MODE_PRIVATE)
+
+               val one = prefs.getString("one", "No name defined")
+                val two = prefs.getString("two", "")
+                val three = prefs.getString("three", "")
 
 //                Toast.makeText(applicationContext,value.toString(),Toast.LENGTH_LONG).show()
-                val se = send(applicationContext,mail.toString(),"audio",msg)
-                se.execute()
-                System.out.println(number)
+//                val se = send(applicationContext,mail.toString(),"audio",msg)
+//                se.execute()
+//                System.out.println(number)
+
                 val smsManager = SmsManager.getDefault() as SmsManager
-                smsManager.sendTextMessage(number,null,msg,null,null)
+                smsManager.sendTextMessage("+91$one",null,msg,null,null)
+
+                val smsM = SmsManager.getDefault() as SmsManager
+                smsM.sendTextMessage("+91$two",null,msg,null,null)
+
+                val sms = SmsManager.getDefault() as SmsManager
+                sms.sendTextMessage("+91$three",null,msg,null,null)
 
             }
         }

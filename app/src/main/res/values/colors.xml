@@ -9,4 +9,9 @@
     <color name="white">#FFFFFFFF</color>
     <color name="orange">#FFBF00</color>
     <color name="pink">#FA8072</color>
+
+    <color name="creamy"> #f8f9fa</color>
+
+
+
 </resources>

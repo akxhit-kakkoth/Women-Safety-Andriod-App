@@ -39,6 +39,35 @@ class saferoute : AppCompatActivity() {
         multiValueMap["katrajnigdi"]!!.add("dangechowk--wakad--warje")
         multiValueMap["katrajnigdi"]!!.add("dangechowk-wakad-warje-ambegaon")
 
+        multiValueMap["PuneLonavala"] = ArrayList()
+        multiValueMap["PuneLonavala"]!!.add("Pune/Dehuroad/Talegaon/Kamshet/malavli/Lonavala")
+        multiValueMap["PuneLonavala"]!!.add("Pune/Wakad/DehuRoad/Somatane Phata/Lonavala")
+
+        multiValueMap["mumbaiLonavala"] = ArrayList()
+        multiValueMap["mumbaiLonavala"]!!.add("CSMT/DadarCentral/Thane/Kalyan/Karjat/Lonavala")
+        multiValueMap["mumbaiLonavala"]!!.add("Mumbai/Vashi/Panvel/Khalapur/Lonavala")
+        multiValueMap["mumbaiLonavala"]!!.add("Mumbai/Thane/Panvel/Khopoli/Khandala/Lonavala")
+
+
+        multiValueMap["lonavalaAhilyanagar"] = ArrayList()
+        multiValueMap["lonavalaAhilyanagar"]!!.add("via-NH-48")
+        multiValueMap["lonavalaAhilyanagar"]!!.add("via-raygaon-wadhe")
+
+        multiValueMap["satarapune"] = ArrayList()
+        multiValueMap["satarapune"]!!.add("via-Mumbai-Satara-highway")
+        multiValueMap["satarapune"]!!.add("via-Mumbai-Satara-highway")
+
+        multiValueMap["satarakaspathar"] = ArrayList()
+        multiValueMap["satarakaspathar"]!!.add("via-Kass-Road")
+
+        multiValueMap["sataraajinkyatara"] = ArrayList()
+        multiValueMap["sataraajinkyatara"]!!.add("via-Ajinkyatara-Fort-Road")
+
+        multiValueMap["satarasajjangad"] = ArrayList()
+        multiValueMap["satarasajjangad"]!!.add("via-Sajjangad-Rd")
+        multiValueMap["satarasajjangad"]!!.add("via-Shendre-Songaon-Rd-and-Sajjangad-Rd")
+
+
         val btn= findViewById<Button>(R.id.btnsearch)
 
         btn.setOnClickListener {
